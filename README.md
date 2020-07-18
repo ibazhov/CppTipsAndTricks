@@ -5,8 +5,6 @@ A compilation of various features of C++ language:
  - Powerful Auto
 
 ## Powerful auto
- 
-_(since C++17)_
 
 Specifier `auto` can be used for return type in function declaration. 
  
@@ -32,7 +30,11 @@ auto makeComplexNumber(double real, double imaginary)
 }
  ```
 
-Sources:
+File: [PowerfulAuto.h](PowerfulAuto.h)
+
+Available: _(since C++17)_
+
+References:
 [Cpp reference](https://en.cppreference.com/w/cpp/language/auto) /
 [CppCon2019 - Slides](https://github.com/CppCon/CppCon2019/blob/master/Presentations/back_to_basics_the_best_parts_of_cpp/back_to_basics_the_best_parts_of_cpp__jason_turner__cppcon_2019.pdf) /
 [CppCon2019 - YouTube](https://youtu.be/iz5Qx18H6lg?t=1368)
