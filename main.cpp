@@ -8,7 +8,7 @@
 
 int main()
 {
-    
+
     cpp_tips_and_tricks::powerful_auto::doTrick();
 
     return 0;

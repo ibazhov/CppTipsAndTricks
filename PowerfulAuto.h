@@ -20,6 +20,7 @@ namespace powerful_auto {
 ///
 /// Sources:
 /// https://en.cppreference.com/w/cpp/language/auto
+/// https://github.com/CppCon/CppCon2019/blob/master/Presentations/back_to_basics_the_best_parts_of_cpp/back_to_basics_the_best_parts_of_cpp__jason_turner__cppcon_2019.pdf
 /// https://youtu.be/iz5Qx18H6lg?t=1368
 
 /// Example 1
