@@ -32,7 +32,7 @@ auto makeComplexNumber(double real, double imaginary)
 
 File: [PowerfulAuto.h](PowerfulAuto.h)
 
-Available: _(since C++17)_
+Available: since C++14
 
 References:
 [Cpp reference](https://en.cppreference.com/w/cpp/language/auto) /

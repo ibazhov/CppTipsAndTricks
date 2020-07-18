@@ -12,11 +12,10 @@ namespace cpp_tips_and_tricks {
 namespace powerful_auto {
 
 /// "Auto" can be used as the return type in function declaration.
-/// More powerfully, function may return a struct which is declared
-/// only inside the body of the function (no forward declaration needed).
-/// We give two examples.
+/// More powerfully, function may return a struct  declared
+/// inside the function body (no forward declaration needed).
 ///
-/// Version: since C++17
+/// Version: since C++14
 ///
 /// Sources:
 /// https://en.cppreference.com/w/cpp/language/auto
