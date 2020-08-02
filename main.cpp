@@ -4,8 +4,8 @@
 // Created by Ivan Bazhov on 18/07/2020.
 //
 
+#include "DereferencingNullptr.h"
 #include "PowerfulAuto.h"
-#include "Nullptr.h"
 
 int main()
 {

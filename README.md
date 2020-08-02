@@ -2,30 +2,30 @@
 
 A compilation of various features of C++ language:
 
- - Dereferening `nullptr`? No problem!
+ - Dereferening `nullptr`
  - Powerful Auto
 
-## Dereferencing of `nullptr`? No problem!
+## Dereferencing `nullptr`
 
 There are some cases in C++ when dereferencing of null pointer is valid
 and does not cause undefined behaviour. These two examples work
 perfectly:
 
 ```cpp
-struct HandsomeStruct
+struct NotVerySophisticatedStruct
 {
-    int some_integer;
-    constexpr static void some_static_member_function() {};
-    constexpr void some_non_static_member_function() {};
+    int some_data;
+    constexpr static void a_static_member_function() {};
+    constexpr void a_non_static_member_function() {};
 };
 
-HandsomeStruct* handsomeStruct_ptr{nullptr};
+NotVerySophisticatedStruct* ptr{nullptr};
 
 // Example - 1
-*handsomeStruct_ptr;
+*ptr;
 
 // Example - 2
-handsomeStruct_ptr->some_static_member_function();
+ptr->a_static_member_function();
  ```
 
 The first example compiles because the result is not used and discarded.
@@ -33,25 +33,25 @@ The second examples is just a valid example.
 
 Some of the following examples are valid, some produce 
 undefined behaviour, some are controversial (compilers disagree on
-whether there is an undefined behaviour or not). You can give it a try or 
-check them in [file with examples](Nullptr.h).
+whether there is an undefined behaviour or not). You can try to guess which one
+is which or check them in [file with examples](DereferencingNullptr.h).
 
 ```cpp
 // Example - 3
 constexpr void foo(int) {}
-foo((*handsomeStruct_ptr, 5));
+foo((*ptr, 5));
 
 // Example - 4
-handsomeStruct_ptr->some_integer;
+ptr->some_data;
 
 // Example - 5
-handsomeStruct_ptr->some_non_static_member_function();
+ptr->a_non_static_member_function();
 
 // Example - 6
-HandsomeStruct handsomeStruct{*handsomeStruct_ptr};
+NotVerySophisticatedStruct not_very_sophisticated_one{*ptr};
 
 // Example - 7
-int b{handsomeStruct_ptr->some_integer};
+int b{handsomeStruct_ptr->some_data};
 ```
 
 To check whether a compiler sees an undefined behaviour in an example,
@@ -59,7 +59,7 @@ one can do the following trick: put the example inside `constexp`. Since
 `constexp` does not allow undefined behaviour, one would caught UD at 
 compile time.
 
-File with examples: [Nullptr.h](Nullptr.h)
+File with examples: [DereferencingNullptr.h](DereferencingNullptr.h)
 
 Source: [post on dev.to](https://dev.to/promwad_team/null-pointers-in-c-what-you-can-and-can-t-do-25ic)
 

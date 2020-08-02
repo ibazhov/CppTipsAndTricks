@@ -6,6 +6,8 @@
 
 #pragma once
 
+#include <iostream>
+
 namespace cpp_tips_and_tricks {
 namespace dereferencing_nullptr {
 
@@ -28,11 +30,11 @@ namespace dereferencing_nullptr {
 
 
 /// Prerequisite: Structure with data and function members
-struct HandsomeStruct
+struct NotVerySophisticatedStruct
 {
-    int some_integer;
-    constexpr static void some_static_member_function() {};
-    constexpr void some_non_static_member_function() {};
+    int some_data;
+    constexpr static void a_static_member_function() {};
+    constexpr void a_non_static_member_function() {};
 };
 
 /// Prerequisite: Function consuming int
@@ -44,48 +46,48 @@ constexpr void foo(int) {}
 /// allow undefined behaviour, we would caught UD at compile time.
 constexpr int testTrick()
 {
-    HandsomeStruct* handsomeStruct_ptr{nullptr};
+    NotVerySophisticatedStruct* ptr{nullptr};
 
     // Example - 1
     // Compile because the result is not used and discarded.
     //
-    *handsomeStruct_ptr;
+    *ptr;
 
     // Example - 2
     // This is valid example
     //
-    handsomeStruct_ptr->some_static_member_function();
+    ptr->a_static_member_function();
 
     // Example - 3
     // Same explanation as in Example 1
     //
-    foo((*handsomeStruct_ptr, 5));
+    foo((*ptr, 5));
 
     // Example - 4
     // This is a controversial example.
     // As tested in the reference, works GCC but not with Clang ot MSVC
     // The explanation can be as follows:
     // again, as in examples 1 and 3 the result is not used and discarded.
-    // handsomeStruct_ptr->some_integer;
+    // ptr->some_data;
 
     // Example - 5
     // According to the Standard (see Reference)
     // the line below should cause Undefined behaviour
     //
     // Despite that, example compiles with GCC and MSVC
-    // handsomeStruct_ptr->some_non_static_member_function();
+    // ptr->a_non_static_member_function();
 
     // Example - 6
     // It doesn't compile because struct should be initialized
     // with something.
     //
-    // HandsomeStruct handsomeStruct{*handsomeStruct_ptr};
+    // NotVerySophisticatedStruct handsomeStruct{*ptr};
 
     // Example - 7
     // Again, doesn't compile because int b should be initialized
     // with something
     //
-    // int b{handsomeStruct_ptr->some_integer};
+    // int b{ptr->some_data};
 
     return 0;
 }
