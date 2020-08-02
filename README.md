@@ -2,7 +2,67 @@
 
 A compilation of various features of C++ language:
 
+ - Dereferening `nullptr`
  - Powerful Auto
+
+## Dereferencing `nullptr`
+
+There are some cases in C++ when dereferencing of null pointer is valid
+and does not cause undefined behaviour. These two examples work
+perfectly:
+
+```cpp
+struct NotVerySophisticatedStruct
+{
+    int some_data;
+    constexpr static void a_static_member_function() {};
+    constexpr void a_non_static_member_function() {};
+};
+
+NotVerySophisticatedStruct* ptr{nullptr};
+
+// Example - 1
+*ptr;
+
+// Example - 2
+ptr->a_static_member_function();
+ ```
+
+The first example compiles because the result is not used and discarded.
+The second examples is just a valid example.
+
+Some of the following examples are valid, some produce 
+undefined behaviour, some are controversial (compilers disagree on
+whether there is an undefined behaviour or not). You can try to guess which one
+is which or check them in [file with examples](DereferencingNullptr.h).
+
+```cpp
+// Example - 3
+constexpr void foo(int) {}
+foo((*ptr, 5));
+
+// Example - 4
+ptr->some_data;
+
+// Example - 5
+ptr->a_non_static_member_function();
+
+// Example - 6
+NotVerySophisticatedStruct not_very_sophisticated_one{*ptr};
+
+// Example - 7
+int b{handsomeStruct_ptr->some_data};
+```
+
+To check whether a compiler sees an undefined behaviour in an example,
+one can do the following trick: put the example inside `constexp`. Since
+`constexp` does not allow undefined behaviour, one would caught UD at 
+compile time.
+
+File with examples: [DereferencingNullptr.h](DereferencingNullptr.h)
+
+Source: [post on dev.to](https://dev.to/promwad_team/null-pointers-in-c-what-you-can-and-can-t-do-25ic)
+
 
 ## Powerful auto
 
