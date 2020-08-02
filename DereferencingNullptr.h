@@ -68,6 +68,7 @@ constexpr int testTrick()
     // As tested in the reference, works GCC but not with Clang ot MSVC
     // The explanation can be as follows:
     // again, as in examples 1 and 3 the result is not used and discarded.
+    //
     // ptr->some_data;
 
     // Example - 5
@@ -75,13 +76,14 @@ constexpr int testTrick()
     // the line below should cause Undefined behaviour
     //
     // Despite that, example compiles with GCC and MSVC
+    //
     // ptr->a_non_static_member_function();
 
     // Example - 6
     // It doesn't compile because struct should be initialized
     // with something.
     //
-    // NotVerySophisticatedStruct handsomeStruct{*ptr};
+    // NotVerySophisticatedStruct non_very_sophisticated_one{*ptr};
 
     // Example - 7
     // Again, doesn't compile because int b should be initialized
